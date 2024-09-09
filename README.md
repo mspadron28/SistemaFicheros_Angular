@@ -1,6 +1,4 @@
-Aquí tienes un ejemplo de un archivo **README** para tu proyecto "Sistema Ficheros Angular":
 
----
 
 # Sistema de Ficheros Académicos - Angular
 
