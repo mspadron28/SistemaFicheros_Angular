@@ -1,0 +1,30 @@
+<!-- solicitudes.component.html -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <h2 class="mb-4 text-center">Solicitudes</h2>
+
+          <div *ngIf="solicitudesCompletas.length > 0; else noSolicitudes" class="solicitudes-list">
+              <!-- Muestra la lista de solicitudes -->
+              <div *ngFor="let solicitud of solicitudesCompletas" class="card mb-3">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ solicitud.titulo_proyecto }}</h5>
+                      <p class="card-text"><strong>ID:</strong> {{ solicitud._id }}</p>
+                      <p class="card-text"><strong>Fecha de Presentación:</strong> {{ solicitud.fecha_presentacion | date }}</p>
+                      <p class="card-text"><strong>Fecha de Resolución:</strong> {{ solicitud.fecha_resolucion | date }}</p>
+                      <p class="card-text"><strong>Importe Económico:</strong> {{ solicitud.importe_economico }}</p>
+                      <p class="card-text"><strong>Fecha de Inicio del Proyecto:</strong> {{ solicitud.fecha_inicioProyecto | date }}</p>
+                      <p class="card-text"><strong>Fecha de Fin del Proyecto:</strong> {{ solicitud.fecha_finProyecto | date }}</p>
+                      <p class="card-text"><strong>Estado:</strong> {{ solicitud.estado ? 'Aprobado' : 'Pendiente' }}</p>
+                  </div>
+              </div>
+          </div>
+          <a class="nav-link btn btn-primary mt-3" routerLink="/dash-investigador">Retornar</a>
+          <ng-template #noSolicitudes>
+              <!-- Muestra un mensaje o diseño especial cuando no hay solicitudes -->
+              <p class="text-center">No hay solicitudes disponibles.</p>
+          </ng-template>
+
+      </div>
+  </div>
+</div>

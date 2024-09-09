@@ -1,0 +1,44 @@
+<!-- generic-form.component.html -->
+
+<form [formGroup]="formConvocatoria" (ngSubmit)="onSubmit()" class="mt-5">
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Programa</label>
+        <div class="col-sm-10">
+            <input formControlName="programa" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Fecha de Publicación</label>
+        <div class="col-sm-10">
+            <input formControlName="fecha_publicacion" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Fecha Límite</label>
+        <div class="col-sm-10">
+            <input formControlName="fecha_limite" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Dirección Web</label>
+        <div class="col-sm-10">
+            <input formControlName="direccion_web" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Número BOE DOGV</label>
+        <div class="col-sm-10">
+            <input formControlName="numero_BOE_DOGV" type="number" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Fecha de Resolución</label>
+        <div class="col-sm-10">
+            <input formControlName="fecha_resolucion" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="btn-group float-end" role="group">
+        <button [disabled]="!formConvocatoria.valid" type="submit" class="btn btn-primary">Crear Convocatoria</button>
+        <a routerLink="/showConvocatoria" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+</form>

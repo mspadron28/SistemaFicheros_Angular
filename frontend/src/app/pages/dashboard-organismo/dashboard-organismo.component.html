@@ -1,0 +1,38 @@
+<!-- dashboard-organismo.component.html -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <h2 class="mb-4">Convocatorias</h2>
+
+          <div *ngIf="convocatorias.length > 0; else noConvocatorias">
+              <!-- Muestra la lista de convocatorias -->
+              <div *ngFor="let convocatoria of convocatorias" class="card mb-3">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ convocatoria.programa }}</h5>
+
+                      <p class="card-text">Fecha Límite: {{ convocatoria.fecha_limite | date }}</p>
+                      <p class="card-text">Fecha de Publicación: {{ convocatoria.fecha_publicacion | date }}</p>
+                      <p class="card-text">Dirección Web: {{ convocatoria.direccion_web }}</p>
+                      <p class="card-text">Número BOE/Diario Oficial: {{ convocatoria.numero_BOE_DOGV }}</p>
+                      <p class="card-text">Fecha de Resolución: {{ convocatoria.fecha_resolucion | date }}</p>
+                      <!-- Aquí el cuadro de diálogo pop up de solicitudes -->
+                      <button class="btn btn-secondary mb-3" (click)="verSolicitudes(convocatoria)">Ver Solicitudes</button>
+                  </div>
+              </div>
+          </div>
+
+          <ng-template #noConvocatorias>
+              <!-- Muestra un mensaje o diseño especial cuando no hay convocatorias -->
+              <p>No hay convocatorias disponibles.</p>
+          </ng-template>
+
+          <!-- Botones separados -->
+          <div class="d-flex justify-content-between">
+              <!-- Botón para crear nueva convocatoria -->
+              <!-- Donde abres el cuadro de diálogo -->
+              <button mat-button (click)="abrirCuadroDialogoCrearConvocatoria()" class="btn btn-primary">Crear Convocatoria</button>
+              <button mat-button routerLink="/" class="btn btn-logout">Cerrar sesión</button>
+          </div>
+      </div>
+  </div>
+</div>

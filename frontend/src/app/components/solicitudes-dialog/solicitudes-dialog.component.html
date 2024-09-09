@@ -1,0 +1,43 @@
+<h2>Solicitudes</h2>
+
+<ng-container *ngIf="haySolicitudes(); else noSolicitudes">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Título del Proyecto</th>
+        <th>Fecha de Presentación</th>
+        <th>Fecha de Resolución</th>
+        <th>Importe Económico</th>
+        <th>Fecha de Inicio del Proyecto</th>
+        <th>Fecha de Fin del Proyecto</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of data.solicitudes">
+        <td>{{ solicitud.titulo_proyecto }}</td>
+        <td>{{ solicitud.fecha_presentacion | date }}</td>
+        <td>{{ solicitud.fecha_resolucion | date }}</td>
+        <td>{{ solicitud.importe_economico }}</td>
+        <td>{{ solicitud.fecha_inicioProyecto | date }}</td>
+        <td>{{ solicitud.fecha_finProyecto | date }}</td>
+        <td>
+            <mat-slide-toggle
+              color="primary"
+              [checked]="solicitud.estado"
+              (change)="toggleEstado(solicitud)"
+            >
+              {{ solicitud.estado ? 'Aceptada' : 'Rechazada' }}
+            </mat-slide-toggle>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noSolicitudes>
+  <!-- Muestra un mensaje cuando no hay solicitudes -->
+  <p>No hay solicitudes disponibles.</p>
+</ng-template>
+
+<button mat-button (click)="cerrarDialogo()">Cerrar</button>

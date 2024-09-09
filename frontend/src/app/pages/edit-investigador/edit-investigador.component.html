@@ -1,0 +1,13 @@
+
+<!-- edit-investigador.component.html -->
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-center">Editar Investigador</h5>
+        <form-investigador
+            *ngIf="model"
+            [modelInvestigador]="model"
+            (submitValues)="onSubmit($event)"
+        ></form-investigador>
+    </div>
+</div>

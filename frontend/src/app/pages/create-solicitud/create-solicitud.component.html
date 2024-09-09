@@ -1,0 +1,55 @@
+<div class="card custom-card">
+    <div class="card-body">
+        <h5 class="card-title text-center">Crear Solicitud</h5>
+        <form [formGroup]="formSolicitud" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">Título del Proyecto</label>
+                <input formControlName="titulo_proyecto" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Presentación</label>
+                <input formControlName="fecha_presentacion" type="date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Resolución</label>
+                <input formControlName="fecha_resolucion" type="date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Importe Económico</label>
+                <input formControlName="importe_economico" type="number" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Inicio del Proyecto</label>
+                <input formControlName="fecha_inicioProyecto" type="date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Fin del Proyecto</label>
+                <input formControlName="fecha_finProyecto" type="date" class="form-control">
+            </div>
+            <div class="mb-3 form-check">
+                <input formControlName="estado" type="checkbox" class="form-check-input">
+                <label class="form-check-label">Estado</label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Convocatorias</label>
+                <select formControlName="convocatoriaId" class="form-select">
+                    <option *ngFor="let convocatoria of convocatorias" [value]="convocatoria._id">
+                        {{ convocatoria.programa }}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Participantes</label>
+                <select formControlName="participantes" class="form-select" multiple>
+                    <option *ngFor="let investigador of getNoResponsableInvestigadores()" [value]="investigador._id">
+                        {{ investigador.nombre }}
+                    </option>
+                </select>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button [disabled]="!formSolicitud.valid" type="submit" class="btn btn-primary">Crear Solicitud</button>
+                <a routerLink="/showSolicitud" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

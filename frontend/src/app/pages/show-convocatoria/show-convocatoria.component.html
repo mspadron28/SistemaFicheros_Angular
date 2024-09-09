@@ -1,0 +1,57 @@
+
+<div class="container text-center">
+    <div class="mt-4">
+      <img src="/assets/espeLogo.png" width="250" alt="" />
+      <h2>Gestión Convocatorias</h2>
+      <button type="button" class="btn btn-primary" routerLink="/principal">Regresar</button>
+    </div>
+    <div class="d-grid gap-2">
+      <a routerLink="/createConvocatoria" class="btn btn-create" type="button">
+        <fa-icon [icon]="faCirclePlus" [size]="'2x'"></fa-icon>
+      </a>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-info">
+            <th style="display: none">Id</th>
+            <th>Programa</th>
+            <th>Fecha de Publicación</th>
+            <th>Fecha Límite</th>
+            <th>Dirección Web</th>
+            <th>Número BOE DOGV</th>
+            <th>Fecha de Resolución</th>
+            <th>Solicitudes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let convocatoria of convocatorias; let i = index">
+            <td style="display: none">{{ convocatoria._id }}</td>
+            <td>{{ convocatoria.programa }}</td>
+            <td>{{ convocatoria.fecha_publicacion | date:'short' }}</td>
+            <td>{{ convocatoria.fecha_limite | date:'short' }}</td>
+            <td>{{ convocatoria.direccion_web }}</td>
+            <td>{{ convocatoria.numero_BOE_DOGV }}</td>
+            <td>{{ convocatoria.fecha_resolucion | date:'short' }}</td>
+            <ol>
+                <li *ngFor="let solicitudId of convocatoria.solicitudes">
+                  {{ getSolicitudById(solicitudId)?.titulo_proyecto }}
+                </li>
+              </ol>
+            <td>
+              <div class="btn-group">
+                <a routerLink="/updateConvocatoria/{{ convocatoria._id }}" class="btn btn-edit">
+                  <fa-icon [icon]="faPen"></fa-icon>
+                </a>
+                <button (click)="delete(convocatoria._id, i)" class="btn btn-delete">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

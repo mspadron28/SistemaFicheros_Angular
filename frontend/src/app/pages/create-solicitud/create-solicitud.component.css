@@ -1,0 +1,23 @@
+.custom-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.custom-card .form-label {
+  font-weight: bold;
+}
+
+.custom-card .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.custom-card .form-check-label {
+  font-weight: normal;
+}
+
+.custom-card .btn {
+  margin-top: 10px;
+}

@@ -1,0 +1,35 @@
+<div class="create-convocatoria-dialog">
+    <h2 class="dialog-title">Crear Convocatoria</h2>
+    <form [formGroup]="formConvocatoria" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="programa">Programa</label>
+        <input formControlName="programa" type="text" id="programa" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha_publicacion">Fecha de Publicación</label>
+        <input formControlName="fecha_publicacion" type="date" id="fecha_publicacion" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha_limite">Fecha Límite</label>
+        <input formControlName="fecha_limite" type="date" id="fecha_limite" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="direccion_web">Dirección Web</label>
+        <input formControlName="direccion_web" type="text" id="direccion_web" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="numero_BOE_DOGV">Número BOE DOGV</label>
+        <input formControlName="numero_BOE_DOGV" type="number" id="numero_BOE_DOGV" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha_resolucion">Fecha de Resolución</label>
+        <input formControlName="fecha_resolucion" type="date" id="fecha_resolucion" class="form-control" required>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit" [disabled]="!formConvocatoria.valid" class="btn btn-primary">Crear Convocatoria</button>
+        <button type="button" (click)="dialogRef.close()" class="btn btn-outline-secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

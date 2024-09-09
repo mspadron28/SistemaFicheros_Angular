@@ -1,0 +1,44 @@
+<!-- show-investigador.component.html -->
+
+<div class="container text-center">
+    <div class="mt-4">
+        <img src="/assets/espeLogo.png" width="250" alt="" />
+        <h2>Gestión Investigador</h2>
+        <button type="button" class="btn btn-primary" routerLink="/principal">Regresar</button>
+    </div>
+    <div class="d-grid gap-2">
+        <a routerLink="/createInvestigador" class="btn btn-create" type="button">
+            <fa-icon [icon]="faCirclePlus" [size]="'2x'"></fa-icon>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-info">
+                    <th style="display: none">Id</th>
+                    <th>Nombre</th>
+                    <th>Responsable</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let investigador of investigadores; let i = index">
+                    <td style="display: none">{{ investigador._id }}</td>
+                    <td>{{ investigador.nombre }}</td>
+                    <td>{{ investigador.responsable ? 'Sí' : 'No' }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a routerLink="/updateInvestigador/{{ investigador._id }}" class="btn btn-edit">
+                                <fa-icon [icon]="faPen"></fa-icon>
+                            </a>
+                            <button (click)="delete(investigador._id, i)" class="btn btn-delete">
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

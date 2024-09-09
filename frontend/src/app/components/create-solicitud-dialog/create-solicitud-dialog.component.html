@@ -1,0 +1,44 @@
+<!-- create-solicitud-dialog.component.html -->
+<div class="create-solicitud-dialog">
+  <h2 class="dialog-title">Crear Solicitud</h2>
+  <form [formGroup]="formSolicitud" (ngSubmit)="onSubmit()" class="custom-form">
+      <div class="form-group">
+          <label for="titulo_proyecto">Título del Proyecto</label>
+          <input formControlName="titulo_proyecto" type="text" id="titulo_proyecto" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="fecha_presentacion">Fecha de Presentación</label>
+          <input formControlName="fecha_presentacion" type="date" id="fecha_presentacion" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="fecha_resolucion">Fecha de Resolución</label>
+          <input formControlName="fecha_resolucion" type="date" id="fecha_resolucion" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="importe_economico">Importe Económico</label>
+          <input formControlName="importe_economico" type="number" id="importe_economico" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="fecha_inicioProyecto">Fecha de Inicio del Proyecto</label>
+          <input formControlName="fecha_inicioProyecto" type="date" id="fecha_inicioProyecto" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="fecha_finProyecto">Fecha de Fin del Proyecto</label>
+          <input formControlName="fecha_finProyecto" type="date" id="fecha_finProyecto" class="form-control" required>
+      </div>
+      <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">Participantes</label>
+          <div class="col-sm-10">
+              <select formControlName="participantes" class="form-control selectpicker" multiple data-live-search="true">
+                  <option *ngFor="let investigador of getNoResponsableInvestigadores()" [value]="investigador._id">
+                      {{ investigador.nombre }}
+                  </option>
+              </select>
+          </div>
+      </div>
+      <div class="form-actions">
+          <button type="submit" [disabled]="!formSolicitud.valid" class="btn btn-primary">Crear Solicitud</button>
+          <button type="button" (click)="dialogRef.close()" class="btn btn-outline-secondary">Cancelar</button>
+      </div>
+  </form>
+</div>

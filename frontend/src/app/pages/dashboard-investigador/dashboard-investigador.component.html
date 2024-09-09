@@ -1,0 +1,44 @@
+<!-- dashboard-investigador.component.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Dashboard Investigador</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/solicitud-investigador">Solicitudes</a>
+        <button mat-button routerLink="/" class="btn btn-logout">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4">Convocatorias</h2>
+
+            <div *ngIf="convocatorias.length > 0; else noConvocatorias" class="convocatorias-list">
+                <!-- Muestra la lista de convocatorias -->
+                <div *ngFor="let convocatoria of convocatorias" class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ convocatoria.programa }}</h5>
+                        <p class="card-text"><strong>Fecha Límite:</strong> {{ convocatoria.fecha_limite | date }}</p>
+                        <p class="card-text"><strong>Fecha de Publicación:</strong> {{ convocatoria.fecha_publicacion | date }}</p>
+                        <p class="card-text"><strong>Dirección Web:</strong> {{ convocatoria.direccion_web }}</p>
+                        <p class="card-text"><strong>Número BOE/Diario Oficial:</strong> {{ convocatoria.numero_BOE_DOGV }}</p>
+                        <p class="card-text"><strong>Fecha de Resolución:</strong> {{ convocatoria.fecha_resolucion | date }}</p>
+
+                        <button class="btn btn-secondary" (click)="realizarSolicitud(convocatoria)">Realizar Solicitud</button>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #noConvocatorias>
+                <!-- Muestra un mensaje o diseño especial cuando no hay convocatorias -->
+                <p class="text-center">No hay convocatorias disponibles.</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<!-- show-solicitud.component.html -->
+
+<div class="container text-center">
+    <div class="mt-4">
+      <img src="/assets/espeLogo.png" width="250" alt="" />
+      <h2>Gestión de Solicitudes</h2>
+      <button type="button" class="btn btn-primary" routerLink="/principal">Regresar</button>
+    </div>
+    <div class="d-grid gap-2">
+      <a routerLink="/createSolicitud" class="btn btn-create" type="button">
+        <fa-icon [icon]="faCirclePlus" [size]="'2x'"></fa-icon>
+      </a>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-info">
+            <th style="display: none">Id</th>
+            <th>Título del Proyecto</th>
+            <th>Fecha de Presentación</th>
+            <th>Fecha de Resolución</th>
+            <th>Importe Económico</th>
+            <th>Fecha de Inicio del Proyecto</th>
+            <th>Fecha de Fin del Proyecto</th>
+            <th>Estado</th>
+            <th>Participantes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let solicitud of solicitudes; let i = index">
+            <td style="display: none">{{ solicitud._id }}</td>
+            <td>{{ solicitud.titulo_proyecto }}</td>
+            <td>{{ solicitud.fecha_presentacion | date:'short' }}</td>
+            <td>{{ solicitud.fecha_resolucion | date:'short' }}</td>
+            <td>{{ solicitud.importe_economico }}</td>
+            <td>{{ solicitud.fecha_inicioProyecto | date:'short' }}</td>
+            <td>{{ solicitud.fecha_finProyecto | date:'short' }}</td>
+            <td>{{ solicitud.estado ? 'Activo' : 'Inactivo' }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let participante of solicitud.participantes">
+                  {{ getInvestigadorById(participante)?.nombre }} 
+                </li>
+              </ul>
+            </td>
+            <td>
+              <div class="btn-group">
+                <a routerLink="/updateSolicitud/{{ solicitud._id }}" class="btn btn-edit">
+                  <fa-icon [icon]="faPen"></fa-icon>
+                </a>
+                <button (click)="delete(solicitud._id, i)" class="btn btn-delete">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
